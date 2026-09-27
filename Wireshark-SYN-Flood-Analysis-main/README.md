@@ -1,83 +1,80 @@
 # Wireshark SYN Flood Analysis
 
-## Overview
+A simulated network-security investigation of a SYN flood Denial-of-Service (DoS) attack using Wireshark TCP/HTTP traffic data.
 
-This project analyzes network traffic from a simulated **SYN flood Denial-of-Service (DoS) attack** using Wireshark TCP/HTTP logs.
+## Objective
 
-The investigation focuses on identifying abnormal TCP connection attempts, analyzing the three-way handshake, and determining how the attack affected legitimate website visitors.
+Identify abnormal TCP connection attempts, determine the attack pattern, and document its effect on legitimate website traffic.
 
 ## Investigation
 
-The network traffic analysis identified:
+| Indicator | Value |
+|---|---|
+| Attacker IP | 203.0.113.0 |
+| Target server | 192.0.2.1 |
+| Target port | 443 |
+| Protocol | TCP |
+| Attack type | SYN flood |
+| Impact | Connection failures and timeouts |
 
-* **Attacker IP:** `203.0.113.0`
-* **Target server:** `192.0.2.1`
-* **Target port:** `443`
-* **Protocol:** TCP
-* **Attack type:** SYN flood
-* **Impact:** Website connection failures and timeouts
-
-The attacker repeatedly sent SYN packets to TCP port 443 at a high rate. The server initially responded with SYN/ACK packets, but eventually became unable to handle legitimate connection attempts.
+The attacker repeatedly sent SYN packets to TCP port 443 at a high rate. The server initially responded with SYN/ACK packets, but legitimate connection attempts subsequently failed.
 
 ## TCP Three-Way Handshake
 
-A normal TCP connection follows three steps:
+A normal TCP connection follows:
 
-```text
 Client → Server: SYN
 Server → Client: SYN/ACK
 Client → Server: ACK
-```
-
-After the connection is established, the client can send an HTTP request and receive a response from the web server.
-
-## Attack Pattern
-
-The traffic showed a clear difference between normal and malicious behavior.
 
 ### Normal traffic
 
-```text
 SYN → SYN/ACK → ACK → HTTP GET → 200 OK
-```
 
-### SYN flood traffic
+### Observed SYN flood pattern
 
-```text
 SYN
 SYN
 SYN
 SYN
 SYN
 ...
-```
 
-The attacker continued sending SYN requests instead of behaving like a normal website visitor.
+The repeated SYN requests without normal connection completion were a key indicator of the attack.
 
 ## Impact
 
-As the attack continued, legitimate users began experiencing connection failures.
+Observed evidence included:
 
-The logs contained:
+- repeated SYN packets from the attacker
+- RST, ACK packets
+- 504 Gateway Time-out responses
+- failed connections from legitimate users
 
-* `RST, ACK` packets
-* `504 Gateway Time-out` errors
-* Failed connection attempts from legitimate users
-* A large number of repeated SYN packets from the attacker
-
-Eventually, the web server stopped responding to legitimate visitor traffic while the attack traffic continued.
+The traffic indicated that legitimate users were affected while the attack traffic continued.
 
 ## Key Finding
 
-Because the SYN flood originated from a single IP address, this event is classified as a **direct DoS attack**, rather than a distributed denial-of-service (DDoS) attack.
+The observed SYN flood originated from a single source IP in the simulated scenario, so it was classified as a direct DoS rather than a distributed DDoS event.
 
-## Tools Used
+## Investigation Workflow
 
-* Wireshark
-* TCP/HTTP traffic analysis
-* TCP three-way handshake analysis
-* Network security fundamentals
+1. Examine TCP connection attempts.
+2. Identify abnormal SYN traffic.
+3. Compare suspicious traffic with legitimate connections.
+4. Analyze TCP flags and server responses.
+5. Determine the attack type.
+6. Document impact and supporting evidence.
+
+## Tools
+
+- Wireshark
+- TCP/HTTP traffic analysis
+- TCP three-way handshake analysis
 
 ## Evidence
 
-The repository contains the incident analysis and supporting traffic evidence used to identify the SYN flood attack.
+- Wireshark TCP_HTTP log - TCP log.pdf
+- Cybersecurity incident report.pdf
+
+This project was completed as part of the Google Cybersecurity Certificate coursework.
