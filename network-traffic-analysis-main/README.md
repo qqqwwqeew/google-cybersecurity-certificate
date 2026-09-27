@@ -1,62 +1,58 @@
-# Cybersecurity Network Traffic Analysis
+# Network Traffic Analysis
 
-## Overview
+A simulated network-security investigation using captured traffic and tcpdump output.
 
-This project documents the analysis of network traffic related to a simulated cybersecurity incident.
+## Objective
 
-The goal was to examine network traffic data, identify the protocol involved, document the incident, and recommend a mitigation for brute-force attacks.
+Examine network traffic, identify the protocols involved, document indicators of suspicious activity, and connect technical findings to appropriate security controls.
 
-## Incident Analysis
+## Analysis
 
-### 1. Protocol Identification
+The captured traffic included DNS (Domain Name System) communication.
 
-The network traffic was analyzed using packet data containing source and destination IP addresses, ports, and protocol information.
+The investigation considered:
 
-The analysis identified **DNS (Domain Name System)** traffic in the captured network data.
+- source and destination IP addresses
+- source and destination ports
+- network protocols
+- packet timestamps
+- traffic patterns
+- indicators of suspicious activity
 
-### 2. Incident Documentation
+The findings were documented in an incident report.
 
-The traffic was reviewed to understand the communication pattern and identify indicators related to the security incident.
+## Security Response
 
-The analysis included:
+The coursework scenario also considered controls that can reduce the effectiveness of automated brute-force activity, including:
 
-* Source and destination IP addresses
-* Source and destination ports
-* Network protocols
-* Packet timestamps
-* Traffic patterns
-* Indicators of suspicious activity
+- account lockout or rate limiting
+- multi-factor authentication (MFA)
+- strong password policies
+- authentication-log monitoring
+- alerting on repeated failed login attempts
 
-The findings were documented as part of the incident analysis.
-
-### 3. Recommended Remediation
-
-One recommended mitigation for brute-force attacks is **account lockout or rate limiting**.
-
-Limiting the number of authentication attempts from a user or source within a specific time period can reduce the effectiveness of automated brute-force attacks.
-
-Additional security controls can include:
-
-* Multi-factor authentication (MFA)
-* Strong password policies
-* Monitoring authentication logs
-* Alerting on repeated failed login attempts
-
-## Skills Demonstrated
-
-* Network traffic analysis
-* Network protocol identification
-* Cybersecurity incident documentation
-* Brute-force attack mitigation
-* Analysis of packet data and logs
-* Basic security monitoring concepts
+These controls should be selected according to the actual attack scenario and environment.
 
 ## Tools
 
-* Network packet/log data
-* Basic network analysis techniques
-* GitHub
+- tcpdump
+- network packet/log data
+- Linux command-line analysis
+
+## Evidence
+
+- tcpdump traffic log.pdf
+- Security incident report template (1).pdf
+
+## Skills Demonstrated
+
+- Network traffic analysis
+- DNS protocol identification
+- Packet/log analysis
+- Incident documentation
+- Basic security monitoring
+- Security-control selection
 
 ## Project Context
 
-This project was completed as part of the **Google Cybersecurity Certificate** coursework.
+This project was completed as part of the Google Cybersecurity Certificate coursework.
