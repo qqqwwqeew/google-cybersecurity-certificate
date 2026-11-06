@@ -14,6 +14,12 @@ This repository focuses on practical investigation and security analysis rather 
 | Network Traffic Analysis | Protocol and traffic analysis | tcpdump, packet analysis |
 | DNS & ICMP Traffic Analysis | Network incident investigation | DNS, ICMP, traffic analysis |
 
+### Security & Incident Response
+
+| Project | Focus | Tools / Concepts |
+|---|---|---|
+| [VirusTotal Malware Investigation](05-virus-total-investigation/README.md) | Malware triage and IoC analysis | VirusTotal, SHA-256/SHA-1, threat intelligence, Pyramid of Pain |
+
 ### Security & Risk
 
 | Project | Focus | Skills |
@@ -34,6 +40,10 @@ This repository focuses on practical investigation and security analysis rather 
 - TCP three-way handshake
 - Wireshark
 - tcpdump
+- Malware triage and IoC analysis
+- File hashing (SHA-256, SHA-1, MD5)
+- VirusTotal and threat-intelligence research
+- Pyramid of Pain
 - Incident documentation
 - Security controls and risk assessment
 - OSINT
